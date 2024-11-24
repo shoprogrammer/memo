@@ -1,0 +1,12 @@
+.endposition{
+    position:absolute;
+    /* top: 30px;
+    right: 140px;
+    
+    margin-right: 10px; */
+
+
+    top: 100px;
+    right: 0px;
+    left: auto;
+}

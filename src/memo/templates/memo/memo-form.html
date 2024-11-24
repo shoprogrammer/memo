@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block head_title %}
+{% if object %}
+メモの編集フォーム{{object.title}}
+{% else %}
+メモの作成フォーム
+{% endif %}
+
+{% endblock %}
+{% block content %}
+<div class="container my-3" style="max-width: 700px;">
+<form method="POST">{% csrf_token %}
+    {% bootstrap_javascript jquery='full' %}
+    {{form.media}}
+    
+    {{ form.as_p }}
+    
+    {% if object %}
+    <button class="btn btn-primary form-control" type="submit">保存</button>
+    <p class="my-3 text-danger" viewBox="0 0 16 16" data-bs-toggle="modal" data-bs-target="#deleteModal-{{object.slug}}" style="cursor:pointer;display:inline-block;font-weight:700; font-size:12px;">
+        <u>メモを削除する</u>
+    </p>
+{% else %}
+    <button class="btn btn-primary form-control" type="submit">登録</button>
+{% endif %}      
+</form>
+{% if object %}
+    {% include 'memo/memo-delete.html' %}
+{% endif %}
+</form>
+</div>
+
+{% endblock %}
